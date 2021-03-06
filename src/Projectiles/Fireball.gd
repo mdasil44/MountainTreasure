@@ -3,6 +3,7 @@ extends Area2D
 export (float) var lifetime: = 5.0 # how long fireball will last by default
 export (float) var speed: = 75 # how fast does fireball travel
 export (float) var shot_spread: = 0.05 # how much spread there is to each fireball
+export (int) var damage = 1
 
 onready var timer = $LifetimeTimer
 

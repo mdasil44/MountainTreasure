@@ -92,6 +92,5 @@ func _on_Stats_no_health():
 
 
 func set_action(action):
-	print(action)
 	self.action = action
 

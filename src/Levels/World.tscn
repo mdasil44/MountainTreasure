@@ -523,8 +523,12 @@ position = Vector2( 223.678, 136.225 )
 
 [node name="EnemyBat_Fire" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 68.75, 93.5 )
+collision_mask = 1
 
 [node name="EnemyBat_Ice" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 101.5, 59 )
+position = Vector2( 75.75, 61 )
+collision_mask = 1
 
-[node name="HealthUI" parent="." instance=ExtResource( 3 )]
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="HealthUI" parent="UILayer" instance=ExtResource( 3 )]

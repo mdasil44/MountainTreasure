@@ -53,11 +53,13 @@ radius = 7.28316
 "enemy",
 ]]
 collision_layer = 16
+collision_mask = 17
 script = ExtResource( 4 )
 
 [node name="BatAnimation" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "BatFly"
+frame = 4
 playing = true
 offset = Vector2( 0, -12 )
 

@@ -98,6 +98,8 @@ func apply_movement(accel):
 
 
 func _on_Hurtbox_area_entered(area):
-	stats.health -= 1
+	if area.get_parent().is_in_group("enemy"):
+		area.get_parent().vel = -area.get_parent().knockback*area.get_parent().vel
+	stats.health -= area.damage
 	hurtBox.start_invincibility(0.5)
 	hurtBox.create_hit_effect()
