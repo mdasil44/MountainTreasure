@@ -508,15 +508,19 @@ height = 12.0
 radius = 5.28168
 height = 5.19798
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"player",
+]]
 collision_layer = 2147483650
 script = ExtResource( 2 )
+MAX_SPEED = 100
+ACCELERATION = 750
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0.176781, -5.83363 )
 texture = ExtResource( 1 )
 hframes = 60
-frame = 28
+frame = 36
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.0397056, 1.43053 )
@@ -546,7 +550,7 @@ parameters/Run/blend_position = Vector2( 0, 0 )
 
 [node name="HitboxAxis" type="Position2D" parent="."]
 position = Vector2( 0, -4 )
-rotation = -1.5708
+rotation = 1.5708
 __meta__ = {
 "_gizmo_extents_": 8.0
 }
@@ -569,6 +573,19 @@ collision_layer = 4
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, -0.668173 )
 shape = SubResource( 36 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+smoothing_speed = 7.5
+drag_margin_left = 0.1
+drag_margin_top = 0.1
+drag_margin_right = 0.1
+drag_margin_bottom = 0.1
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 
 [editable path="HitboxAxis/SwordHitBox"]

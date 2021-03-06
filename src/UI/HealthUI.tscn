@@ -1,11 +1,12 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/UI/HealthUI.gd" type="Script" id=1]
-
+[ext_resource path="res://src/UI/HeartUIFull.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/UI/HeartUIEmpty.tscn" type="PackedScene" id=3]
 
 [node name="HealthUI" type="Control"]
-margin_right = 99.0
-margin_bottom = 17.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_scale = Vector2( 0.40471, 0.451909 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -16,7 +17,28 @@ __meta__ = {
 margin_right = 80.0
 margin_bottom = 14.0
 rect_scale = Vector2( 0.95109, 1.58545 )
+size_flags_horizontal = 3
+size_flags_vertical = 6
 text = "HP = 4"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MarginContainer" type="NinePatchRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 98.0
+margin_bottom = 12.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HeartUIFull" parent="." instance=ExtResource( 2 )]
+
+[node name="HeartUIEmpty" parent="." instance=ExtResource( 3 )]

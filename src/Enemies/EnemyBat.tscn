@@ -49,14 +49,15 @@ radius = 45.7531
 [sub_resource type="CircleShape2D" id=10]
 radius = 7.28316
 
-[node name="EnemyBat" type="KinematicBody2D"]
+[node name="EnemyBat" type="KinematicBody2D" groups=[
+"enemy",
+]]
 collision_layer = 16
 script = ExtResource( 4 )
 
 [node name="BatAnimation" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "BatFly"
-frame = 4
 playing = true
 offset = Vector2( 0, -12 )
 

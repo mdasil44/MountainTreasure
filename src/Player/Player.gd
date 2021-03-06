@@ -29,11 +29,19 @@ func _physics_process(delta):
 			move_state(delta)
 		ATTACK:
 			attack_state(delta)
+	
+	if stats.frozen:
+		modulate = Color("80deff")
+	else:
+		modulate = Color("ffffff")
+		
 
 
 func _process(delta: float) -> void:	
 	if Input.is_key_pressed(KEY_Q):
 		get_tree().quit()
+	if Input.is_key_pressed(KEY_0):
+		$Camera2D.current = !$Camera2D.current
 
 
 # function to move the player
@@ -49,9 +57,10 @@ func move_state(delta):
 		animationTree.set("parameters/Run/blend_position", axis)
 		animationTree.set("parameters/Attack/blend_position", axis)
 		animationState.travel("Run")
-		apply_movement(axis * ACCELERATION * delta)
+		apply_movement(axis * 2*ACCELERATION * delta)
+	
 	# continue motion, even against walls
-	motion = move_and_slide(motion)
+	motion = move_and_slide(stats.speed_mod*motion)
 	
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
@@ -86,7 +95,6 @@ func apply_movement(accel):
 	motion += accel
 	# cap the motion speed
 	motion = motion.clamped(MAX_SPEED)
-	
 
 
 func _on_Hurtbox_area_entered(area):
