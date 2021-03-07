@@ -7,6 +7,7 @@ enum{
 var state = MOVE
 export var MAX_SPEED = 200
 export var ACCELERATION = 500
+export var invincibility_time = 0.5
 var motion = Vector2.ZERO
 var stats = PlayerStats
 
@@ -29,11 +30,23 @@ func _physics_process(delta):
 			move_state(delta)
 		ATTACK:
 			attack_state(delta)
+	
+	if stats.frozen:
+		modulate = Color("80deff")
+	else:
+		modulate = Color("ffffff")
+	print($Hurtbox.invincible)
 
 
 func _process(delta: float) -> void:	
-	if Input.is_key_pressed(KEY_Q):
-		get_tree().quit()
+	# test option: press Q to quit game
+	#if Input.is_key_pressed(KEY_Q):
+	#	get_tree().quit()
+	
+	# test option: press 0 to toggle camera mode
+	#if Input.is_key_pressed(KEY_0):
+	#	$Camera2D.current = !$Camera2D.current
+	pass
 
 
 # function to move the player
@@ -49,9 +62,10 @@ func move_state(delta):
 		animationTree.set("parameters/Run/blend_position", axis)
 		animationTree.set("parameters/Attack/blend_position", axis)
 		animationState.travel("Run")
-		apply_movement(axis * ACCELERATION * delta)
+		apply_movement(axis * 2*ACCELERATION * delta)
+	
 	# continue motion, even against walls
-	motion = move_and_slide(motion)
+	motion = move_and_slide(stats.speed_mod*motion)
 	
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
@@ -86,10 +100,15 @@ func apply_movement(accel):
 	motion += accel
 	# cap the motion speed
 	motion = motion.clamped(MAX_SPEED)
-	
 
 
 func _on_Hurtbox_area_entered(area):
-	stats.health -= 1
-	hurtBox.start_invincibility(0.5)
-	hurtBox.create_hit_effect()
+	if area.get_parent().is_in_group("enemy"):
+		area.get_parent().vel = -area.get_parent().knockback*area.get_parent().vel
+	if not hurtBox.invincible:
+		stats.health -= area.damage
+		hurtBox.start_invincibility(invincibility_time)
+		hurtBox.create_hit_effect()
+		$HurtAudio.play()
+	
+	

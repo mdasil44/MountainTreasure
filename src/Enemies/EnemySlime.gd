@@ -54,10 +54,16 @@ func _physics_process(delta):
 					vel = Vector2.ZERO
 				
 				# face the player
-				if playerDirection.x < 0:
-					$BatAnimation.flip_h = true
+				if playerDirection.angle() <= -3*PI/4 or playerDirection.angle() >= 3*PI/4:
+					$SlimeAnimation.animation = "move_left"
+				elif playerDirection.angle() <= -PI/4:
+					$SlimeAnimation.animation = "move_down"
+				elif playerDirection.angle() >= PI/4:
+					$SlimeAnimation.animation = "move_up"
+				elif playerDirection.angle() <= 0 or playerDirection.angle() > 0:
+					$SlimeAnimation.animation = "move_right"
 				else:
-					$BatAnimation.flip_h = false
+					$SlimeAnimation.animation = "move_down"
 				
 				# perform action if any
 				if action != null:
@@ -77,6 +83,7 @@ func seek_player():
 
 func _on_Hurtbox_area_entered(area):
 	# reduce bat health by damage of sword
+	print("hi")
 	stats.health -= area.damage
 	hurtBox.create_hit_effect()
 	vel = -knockback*vel
@@ -94,3 +101,4 @@ func _on_Stats_no_health():
 
 func set_action(action):
 	self.action = action
+

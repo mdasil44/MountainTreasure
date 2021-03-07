@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Enemies/EnemyBat.tscn" type="PackedScene" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://assets/World/DirtTileset.png" type="Texture" id=4]
 [ext_resource path="res://assets/World/CliffTileset.png" type="Texture" id=5]
 [ext_resource path="res://assets/World/GrassBackground.png" type="Texture" id=6]
+[ext_resource path="res://src/Enemies/EnemyBat_Fire.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/Enemies/EnemyBat_Ice.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/Enemies/EnemySlime.tscn" type="PackedScene" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -509,6 +512,7 @@ tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 1, -65535, 0, 1, -65534, 0, 1, -6
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 158.746, 77.7817 )
+invincibility_time = 0.5
 
 [node name="EnemyBat" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 223.678, 92.9191 )
@@ -519,4 +523,17 @@ position = Vector2( 223.258, 61.3854 )
 [node name="EnemyBat3" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 223.678, 136.225 )
 
-[node name="HealthUI" parent="." instance=ExtResource( 3 )]
+[node name="EnemyBat_Fire" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 68.75, 93.5 )
+collision_mask = 1
+
+[node name="EnemyBat_Ice" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 75.75, 61 )
+collision_mask = 1
+
+[node name="Slime" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 115.983, 140.143 )
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="HealthUI" parent="UILayer" instance=ExtResource( 3 )]
