@@ -9,7 +9,7 @@ action_stagger_time = 1.0
 
 [node name="BatAnimation" parent="." index="0"]
 modulate = Color( 0, 1, 1, 1 )
-frame = 3
+frame = 4
 
 [node name="Stats" parent="." index="4"]
 max_health = 1

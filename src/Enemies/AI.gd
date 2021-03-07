@@ -28,8 +28,8 @@ var ray_visual = true
 export (float) var wander_time = 5.0
 var wander_timer = Timer.new()
 var origin: = Vector2.ZERO # origin about which the actor will "patrol"
-var reset_rotation = false
-var direction = 1
+
+var stagger_timer = Timer.new()
 
 
 func _ready() -> void:
@@ -38,6 +38,8 @@ func _ready() -> void:
 	wander_timer.set_one_shot(true)
 	add_child(wander_timer)
 	wander_timer.connect("timeout", self, "timeout")
+	
+	
 	
 	$PlayerDetectionZone/CollisionShape2D.shape.radius = detection_radius
 

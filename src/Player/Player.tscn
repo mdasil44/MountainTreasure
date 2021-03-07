@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://assets/Actors/Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://src/Player/Player.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/Player/SwordHitbox.gd" type="Script" id=4]
 [ext_resource path="res://assets/Music and Sounds/Swipe.wav" type="AudioStream" id=5]
 [ext_resource path="res://src/Hitbox/Hurtbox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/Music and Sounds/Hurt.wav" type="AudioStream" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 5.99601
@@ -64,7 +65,7 @@ tracks/3/keys = {
 "values": [ false, true ]
 }
 tracks/4/type = "audio"
-tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/path = NodePath("SwipeAudio")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -132,7 +133,7 @@ tracks/3/keys = {
 "values": [ false, true ]
 }
 tracks/4/type = "audio"
-tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/path = NodePath("SwipeAudio")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -200,7 +201,7 @@ tracks/3/keys = {
 "values": [ false, true ]
 }
 tracks/4/type = "audio"
-tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/path = NodePath("SwipeAudio")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -268,7 +269,7 @@ tracks/3/keys = {
 "values": [ false, true ]
 }
 tracks/4/type = "audio"
-tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/path = NodePath("SwipeAudio")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -564,7 +565,7 @@ script = ExtResource( 4 )
 shape = SubResource( 35 )
 disabled = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SwipeAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 6 )]
@@ -575,6 +576,7 @@ position = Vector2( 0, -0.668173 )
 shape = SubResource( 36 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+current = true
 limit_left = 0
 limit_top = 0
 limit_smoothed = true
@@ -586,6 +588,10 @@ drag_margin_left = 0.1
 drag_margin_top = 0.1
 drag_margin_right = 0.1
 drag_margin_bottom = 0.1
+
+[node name="HurtAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+attenuation = 0.420448
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 
 [editable path="HitboxAxis/SwordHitBox"]
