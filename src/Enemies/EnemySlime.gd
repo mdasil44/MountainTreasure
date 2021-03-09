@@ -82,8 +82,7 @@ func seek_player():
 
 
 func _on_Hurtbox_area_entered(area):
-	# reduce bat health by damage of sword
-	print("hi")
+	# reduce slime health by damage of sword
 	stats.health -= area.damage
 	hurtBox.create_hit_effect()
 	vel = -knockback*vel
@@ -92,7 +91,7 @@ func _on_Hurtbox_area_entered(area):
 
 
 func _on_Stats_no_health():
-	# make bat disappear
+	# make slime disappear
 	queue_free()
 	var enemyDeath = EnemyDeathEffect.instance()
 	get_parent().add_child(enemyDeath)

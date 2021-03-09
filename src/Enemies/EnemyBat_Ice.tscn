@@ -5,7 +5,6 @@
 
 [node name="EnemyBat_Ice" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-action_stagger_time = 1.0
 
 [node name="BatAnimation" parent="." index="0"]
 modulate = Color( 0, 1, 1, 1 )

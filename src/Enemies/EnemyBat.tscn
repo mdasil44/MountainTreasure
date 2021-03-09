@@ -60,7 +60,7 @@ script = ExtResource( 4 )
 [node name="BatAnimation" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "BatFly"
-frame = 1
+frame = 4
 playing = true
 offset = Vector2( 0, -12 )
 
