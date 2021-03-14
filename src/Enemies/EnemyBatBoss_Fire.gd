@@ -1,9 +1,17 @@
 extends "res://src/Enemies/EnemyBat.gd"
 
+var count = 0
 
 var fireball = preload("res://src/Projectiles/Fireball.tscn")
 var fireball1 = preload("res://src/Projectiles/Fireball.tscn")
 var fireball2 = preload("res://src/Projectiles/Fireball.tscn")
+
+var bat1 = preload("res://src/Enemies/EnemyBat.tscn")
+var bat2 = preload("res://src/Enemies/EnemyBat.tscn")
+
+onready var BatPos = $BatPosition1
+onready var BatPos1 = $BatPosition2
+
 onready var FireballPos = $FireballPosition
 onready var FireballPos1 = $FireballPosition1
 onready var FireballPos2 = $FireballPosition2
@@ -14,7 +22,7 @@ var firerate_timer = Timer.new()
 
 
 func _ready() -> void:
-	stats.health = 10
+	stats.health = 5
 	
 	get_node("BatAnimation").modulate = Color("ddb231") # 00ffff
 	
@@ -27,10 +35,31 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	pass
+	
+	if stats.health == 3 && count == 0:
+		
+		count = 1
+		
+		var bat_instance1 = bat1.instance()
+		var bat_instance2 = bat2.instance()
+		
+		BatPos.add_child(bat_instance1)
+		BatPos1.add_child(bat_instance2)
+		
+	elif stats.health == 1 && count == 1:
+		
+		count = 2
+		
+		var bat_instance1 = bat1.instance()
+		var bat_instance2 = bat2.instance()
+		
+		BatPos.add_child(bat_instance1)
+		BatPos1.add_child(bat_instance2)
+		
 
 
 func shoot_fireball(target) -> bool:
+	
 	var target_position = target.global_position
 	var curr_position = Vector2(global_position.x, global_position.y-15) # offset y for sprite
 	var angle = (target_position - curr_position).angle()

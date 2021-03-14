@@ -29,12 +29,20 @@ position = Vector2( 0, -25.8976 )
 position = Vector2( 10, 0 )
 
 [node name="FireballPosition1" type="Position2D" parent="." index="8"]
+visible = false
 position = Vector2( 10, -14.8819 )
 
 [node name="FireballPosition2" type="Position2D" parent="." index="9"]
+visible = false
 position = Vector2( 10, 11.7071 )
 
-[node name="HitAudio" parent="." index="10"]
+[node name="BatPosition1" type="Position2D" parent="." index="10"]
+position = Vector2( 34.6047, -35.915 )
+
+[node name="BatPosition2" type="Position2D" parent="." index="11"]
+position = Vector2( 34.6047, 11.7071 )
+
+[node name="HitAudio" parent="." index="12"]
 visible = false
 
 [editable path="Hurtbox"]
