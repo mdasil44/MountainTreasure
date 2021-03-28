@@ -27,7 +27,7 @@ extents = Vector2( 6, 6 )
 script = ExtResource( 2 )
 
 [node name="Key" type="Sprite" parent="."]
-position = Vector2( 0, 0.23485 )
+position = Vector2( 0, 1.93559 )
 texture = ExtResource( 1 )
 vframes = 2
 hframes = 16

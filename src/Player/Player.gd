@@ -27,10 +27,15 @@ var fireball = preload("res://src/Projectiles/Fireball_Blue.tscn")
 
 var close_enemies = {} # empty dictionary to store nearby enemies for auto aim
 
+const trail_scene = preload("res://src/Player/Trail.tscn")
+
+var trail_list = []
 
 func _ready():
 	stats.connect("no_health", self, "queue_free")
 	animationTree.active = true
+	
+	$TrailTimer.connect("timeout", self, "add_trail")
 	
 	var shape = CircleShape2D.new()
 	shape.set_radius(detection_radius)
@@ -178,7 +183,7 @@ func apply_movement(accel):
 
 func _on_Hurtbox_area_entered(area):
 	if area.get_parent().is_in_group("enemy"):
-		print(area.get_parent().knockback*area.get_parent().vel)
+		#print(area.get_parent().knockback*area.get_parent().vel)
 		#var knockback_vel = clamp(area.get_parent().knockback*area.get_parent().vel,0,area.get_parent().knockback*area.get_parent().MAX_SPEED)
 		#print(knockback_vel)
 		area.get_parent().vel = (-area.get_parent().knockback*area.get_parent().vel).clamped(area.get_parent().MAX_SPEED*area.get_parent().knockback)
@@ -198,3 +203,11 @@ func _on_EnemyDetectionZone_body_entered(body: Node) -> void:
 func _on_EnemyDetectionZone_body_exited(body: Node) -> void:
 	if close_enemies.has(body):
 		close_enemies.erase(body)
+
+
+func add_trail():
+	var trail = trail_scene.instance()
+	trail.player = self
+	trail.position = position
+	add_child(trail)
+	trail_list.push_front(trail)
