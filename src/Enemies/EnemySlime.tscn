@@ -100,7 +100,7 @@ collision_layer = 16
 collision_mask = 17
 script = ExtResource( 7 )
 
-[node name="Shadow" type="Sprite" parent="."]
+[node name="SlimeShadow" type="Sprite" parent="."]
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 4 )
 
@@ -109,7 +109,7 @@ position = Vector2( 0, -3 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 13 )
 animation = "move_down"
-frame = 1
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

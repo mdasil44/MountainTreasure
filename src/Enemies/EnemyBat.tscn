@@ -44,8 +44,8 @@ radius = 4.03112
 radius = 6.0
 height = 6.0
 
-[sub_resource type="CircleShape2D" id=9]
-radius = 45.7531
+[sub_resource type="CircleShape2D" id=11]
+radius = 50.0
 
 [sub_resource type="CircleShape2D" id=10]
 radius = 7.28316
@@ -60,7 +60,6 @@ script = ExtResource( 4 )
 [node name="BatAnimation" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "BatFly"
-frame = 1
 playing = true
 offset = Vector2( 0, -12 )
 
@@ -83,7 +82,7 @@ max_health = 3
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 6 )]
 
 [node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
-shape = SubResource( 9 )
+shape = SubResource( 11 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 7 )]
 collision_mask = 4

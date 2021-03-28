@@ -17,13 +17,13 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 2.83464
+radius = 4.0
 
 [node name="Fireball" type="Area2D"]
-collision_layer = 16
+collision_layer = 32
 collision_mask = 5
 script = ExtResource( 7 )
-speed = 75.0
+speed = 110.0
 
 [node name="FireballAnimation" type="AnimatedSprite" parent="."]
 position = Vector2( -3.23175, -6.61831 )
