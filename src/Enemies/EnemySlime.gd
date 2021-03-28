@@ -28,7 +28,9 @@ var action = null
 var stagger_timer = Timer.new()
 
 func _ready() -> void:
-	get_node("PlayerDetectionZone/CollisionShape2D").shape.radius = detection_radius
+	var shape = CircleShape2D.new()
+	shape.set_radius(detection_radius)
+	$PlayerDetectionZone/CollisionShape2D.set_shape(shape)
 	
 	stagger_timer.set_timer_process_mode(Timer.TIMER_PROCESS_PHYSICS)
 	stagger_timer.set_wait_time(action_stagger_time)
@@ -37,6 +39,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta):
+	
 	match state:
 		IDLE:
 			vel = vel.move_toward(Vector2.ZERO, FRICTION * delta)

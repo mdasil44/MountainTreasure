@@ -9,11 +9,15 @@ export (int) var mana_regen_rate = 2 # per second mana regeneration rate
 export (float) var mana_regen_buffer = 0.5 # seconds to wait after mana use before regen
 onready var mana = max_mana setget set_mana
 
+var keys = 0 setget set_keys
+
 signal no_health
 signal health_changed(value)
 
 signal no_mana
 signal mana_changed(value)
+
+signal keys_changed(value)
 
 export (float) var freeze_time = 1.0
 export (float) var frozen_speed_mod = 0.75
@@ -51,17 +55,22 @@ func _physics_process(delta: float) -> void:
 
 
 func set_health(value):
-	health = clamp(value, 0, max_health);
+	health = clamp(value, 0, max_health)
 	emit_signal("health_changed", health)
 	if health <= 0:
 		emit_signal("no_health")
 
 
 func set_mana(value):
-	mana = clamp(value, 0, max_mana);
+	mana = clamp(value, 0, max_mana)
 	emit_signal("mana_changed", mana)
 	if mana <= 0:
 		emit_signal("no_mana")
+
+
+func set_keys(value):
+	keys = value if value >= 0 else 0
+	emit_signal("keys_changed", keys)
 
 
 func update_speed_mod() -> float:

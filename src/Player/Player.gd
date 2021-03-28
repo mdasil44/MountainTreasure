@@ -32,7 +32,9 @@ func _ready():
 	stats.connect("no_health", self, "queue_free")
 	animationTree.active = true
 	
-	$EnemyDetectionZone/CollisionShape2D.shape.radius = detection_radius
+	var shape = CircleShape2D.new()
+	shape.set_radius(detection_radius)
+	$EnemyDetectionZone/CollisionShape2D.set_shape(shape)
 
 
 func _physics_process(delta):
@@ -49,7 +51,11 @@ func _physics_process(delta):
 	find_closest_enemy()
 
 
-func _process(delta: float) -> void:	
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_end"):
+		stats.set_keys(stats.keys + 1)
+	if Input.is_action_just_pressed("ui_home"):
+		stats.set_keys(stats.keys - 1)
 	# test option: press Q to quit game
 	#if Input.is_key_pressed(KEY_Q):
 	#	get_tree().quit()
@@ -58,6 +64,10 @@ func _process(delta: float) -> void:
 	#if Input.is_key_pressed(KEY_0):
 	#	$Camera2D.current = !$Camera2D.current
 	pass
+
+
+func increment_keys():
+	stats.set_keys(stats.keys + 1)
 
 
 # function to move the player
@@ -169,9 +179,9 @@ func apply_movement(accel):
 func _on_Hurtbox_area_entered(area):
 	if area.get_parent().is_in_group("enemy"):
 		print(area.get_parent().knockback*area.get_parent().vel)
-		var knockback_vel = clamp(area.get_parent().knockback*area.get_parent().vel,0,area.get_parent().knockback*area.get_parent().MAX_SPEED)
-		print(knockback_vel)
-		area.get_parent().vel = -area.get_parent().knockback*area.get_parent().vel
+		#var knockback_vel = clamp(area.get_parent().knockback*area.get_parent().vel,0,area.get_parent().knockback*area.get_parent().MAX_SPEED)
+		#print(knockback_vel)
+		area.get_parent().vel = (-area.get_parent().knockback*area.get_parent().vel).clamped(area.get_parent().MAX_SPEED*area.get_parent().knockback)
 	if not hurtBox.invincible:
 		stats.set_health(stats.health - area.damage)
 		hurtBox.start_invincibility(invincibility_time)

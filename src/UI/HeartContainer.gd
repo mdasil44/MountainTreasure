@@ -3,8 +3,6 @@ extends Container
 var hearts = 4 setget set_hearts
 var max_hearts = 4 setget set_max_hearts
 
-const HEART_FULL = preload("res://src/UI/HeartUIFull.tscn")
-const HEART_EMPTY = preload("res://src/UI/HeartUIEmpty.tscn")
 const HEART = preload("res://src/UI/Heart.tscn")
 
 const HEART_ROW_SIZE = 8
@@ -30,6 +28,7 @@ func _ready():
 	
 	for heart in num_hearts:
 		var new_heart = HEART.instance()
+		new_heart.global_position = Vector2(-16,-16)
 		add_child(new_heart)
 
 

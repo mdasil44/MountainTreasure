@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://assets/UI/HeartUIEmpty.png" type="Texture" id=1]
-
-[node name="HeartUIEmpty" type="Sprite"]
-position = Vector2( 59.0734, 108.809 )
-scale = Vector2( 1, 1 )
-texture = ExtResource( 1 )

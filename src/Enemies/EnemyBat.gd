@@ -13,6 +13,7 @@ export var knockback = 2
 var target
 var hit_pos
 var ray_visual = true
+var laser_color = Color(1.0, 0.329, 0.298, 1.0)
 
 enum{
 	IDLE,
@@ -28,7 +29,9 @@ var action = null
 var stagger_timer = Timer.new()
 
 func _ready() -> void:
-	get_node("PlayerDetectionZone/CollisionShape2D").shape.radius = detection_radius
+	var shape = CircleShape2D.new()
+	shape.set_radius(detection_radius)
+	$PlayerDetectionZone/CollisionShape2D.set_shape(shape)
 	
 	stagger_timer.set_timer_process_mode(Timer.TIMER_PROCESS_PHYSICS)
 	stagger_timer.set_wait_time(action_stagger_time)
@@ -69,10 +72,10 @@ func _physics_process(delta):
 	vel = move_and_slide(vel)
 
 
-
 func seek_player():
 	if playerDetZone.can_see_player():
 		state = CHASE
+	#if 
 
 
 func _on_Hurtbox_area_entered(area):
