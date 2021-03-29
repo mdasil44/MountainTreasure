@@ -12,6 +12,8 @@
 [ext_resource path="res://src/UI/Key.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/Potions/Potion.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/UI/UILayer.gd" type="Script" id=12]
+[ext_resource path="res://src/UI/KeyPickup.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/UI/HeartPickup.tscn" type="PackedScene" id=11]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -513,6 +515,13 @@ tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 1, -65535, 0, 1, -65534, 0, 1, -6
 
 [node name="Key" parent="." instance=ExtResource( 10 )]
 position = Vector2( 157, 43 )
+color = 2
+
+[node name="Heart" parent="." instance=ExtResource( 11 )]
+position = Vector2( 142.285, 59.9477 )
+
+[node name="Heart2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 160.548, 60.1704 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -617,3 +626,8 @@ position = Vector2( 116.858, 114.338 )
 [connection signal="body_entered" from="Potion2" to="YSort/Player" method="_on_Potion_body_entered"]
 [connection signal="body_entered" from="Potion3" to="YSort/Player" method="_on_Potion_body_entered"]
 [connection signal="body_entered" from="Potion4" to="YSort/Player" method="_on_Potion_body_entered"]
+
+[node name="KeyContainer" parent="UILayer/Interface/NinePatchRect" index="2"]
+color = 2
+
+[editable path="UILayer/Interface"]

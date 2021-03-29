@@ -29,10 +29,15 @@ var fireball = preload("res://src/Projectiles/Fireball_Blue.tscn")
 
 var close_enemies = {} # empty dictionary to store nearby enemies for auto aim
 
+const trail_scene = preload("res://src/Player/Trail.tscn")
+
+var trail_list = []
 
 func _ready():
 	stats.connect("no_health", self, "game_over_lose")
 	animationTree.active = true
+	
+	$TrailTimer.connect("timeout", self, "add_trail")
 	
 	var shape = CircleShape2D.new()
 	shape.set_radius(detection_radius)
@@ -56,10 +61,6 @@ func _physics_process(delta):
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_end"):
-		stats.set_keys(stats.keys + 1)
-	if Input.is_action_just_pressed("ui_home"):
-		stats.set_keys(stats.keys - 1)
 	# test option: press Q to quit game
 	#if Input.is_key_pressed(KEY_Q):
 	#	get_tree().quit()
@@ -78,6 +79,11 @@ func roll_state(delta):
 	hurtBox.start_invincibility(invincibility_time)
 	animationState.travel("Roll")
 	motion = move_and_slide(stats.speed_mod*motion)
+
+func increment_max_health():
+	stats.set_max_health(stats.max_health + 4)
+	stats.set_health(stats.health + 4)
+
 
 # function to move the player
 func move_state(delta):
@@ -193,7 +199,7 @@ func apply_movement(accel):
 
 func _on_Hurtbox_area_entered(area):
 	if area.get_parent().is_in_group("enemy"):
-		print(area.get_parent().knockback*area.get_parent().vel)
+		#print(area.get_parent().knockback*area.get_parent().vel)
 		#var knockback_vel = clamp(area.get_parent().knockback*area.get_parent().vel,0,area.get_parent().knockback*area.get_parent().MAX_SPEED)
 		#print(knockback_vel)
 		area.get_parent().vel = (-area.get_parent().knockback*area.get_parent().vel).clamped(area.get_parent().MAX_SPEED*area.get_parent().knockback)
@@ -223,3 +229,10 @@ func game_over_lose():
 
 func _on_Potion_body_entered(body):
 	stats.health += 4
+
+func add_trail():
+	var trail = trail_scene.instance()
+	trail.player = self
+	trail.position = position
+	add_child(trail)
+	trail_list.push_front(trail)

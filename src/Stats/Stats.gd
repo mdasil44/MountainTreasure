@@ -13,6 +13,7 @@ var keys = 0 setget set_keys
 
 signal no_health
 signal health_changed(value)
+signal max_health_changed(value)
 
 signal no_mana
 signal mana_changed(value)
@@ -59,6 +60,11 @@ func set_health(value):
 	emit_signal("health_changed", health)
 	if health <= 0:
 		emit_signal("no_health")
+
+
+func set_max_health(value):
+	max_health = value if value >= 0 else 0
+	emit_signal("max_health_changed", max_health)
 
 
 func set_mana(value):
