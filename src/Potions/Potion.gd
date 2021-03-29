@@ -24,5 +24,7 @@ func _ready():
 
 
 func _on_Potion_body_entered(body):
+	if body.is_in_group("player"):
+		body.increment_health(4)
 	queue_free()
 

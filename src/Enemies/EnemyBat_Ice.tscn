@@ -8,10 +8,9 @@ script = ExtResource( 2 )
 
 [node name="BatAnimation" parent="." index="0"]
 modulate = Color( 0, 1, 1, 1 )
-frame = 3
 
 [node name="Stats" parent="." index="4"]
-max_health = 1
+default_max_health = 2
 
 [node name="Hitbox" parent="." index="6"]
 collision_mask = 6

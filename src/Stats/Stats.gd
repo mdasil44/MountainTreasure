@@ -1,7 +1,8 @@
 extends Node
 
 
-export(int) var max_health = 1
+export(int) var default_max_health = 1
+onready var max_health = default_max_health setget set_max_health
 onready var health = max_health setget set_health
 
 export (int) var max_mana = 20
@@ -53,6 +54,11 @@ func _physics_process(delta: float) -> void:
 	#print(mana)
 	if mana_regen_timer.get_time_left() <= 0:
 		set_mana(mana + mana_regen_rate*delta)
+
+
+func reset():
+	set_max_health(default_max_health)
+	set_health(max_health)
 
 
 func set_health(value):

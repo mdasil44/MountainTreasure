@@ -123,7 +123,7 @@ collision_layer = 8
 shape = SubResource( 15 )
 
 [node name="Stats" parent="." instance=ExtResource( 6 )]
-max_health = 3
+default_max_health = 3
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 5 )]
 

@@ -8,9 +8,10 @@ script = ExtResource( 2 )
 
 [node name="BatAnimation" parent="." index="0"]
 modulate = Color( 0.866667, 0.698039, 0.192157, 1 )
+frame = 3
 
 [node name="Stats" parent="." index="4"]
-max_health = 2
+default_max_health = 2
 
 [node name="FireballPosition" type="Position2D" parent="." index="7"]
 position = Vector2( 10, 0 )

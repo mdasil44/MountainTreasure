@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Enemies/EnemyBat.tscn" type="PackedScene" id=2]
@@ -9,11 +9,10 @@
 [ext_resource path="res://src/Enemies/EnemyBat_Fire.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Enemies/EnemyBat_Ice.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Enemies/EnemySlime.tscn" type="PackedScene" id=9]
-[ext_resource path="res://src/UI/Key.tscn" type="PackedScene" id=10]
-[ext_resource path="res://src/Potions/Potion.tscn" type="PackedScene" id=11]
-[ext_resource path="res://src/UI/UILayer.gd" type="Script" id=12]
 [ext_resource path="res://src/UI/KeyPickup.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/UI/HeartPickup.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/UI/UILayer.gd" type="Script" id=12]
+[ext_resource path="res://src/Potions/Potion.tscn" type="PackedScene" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -523,10 +522,22 @@ position = Vector2( 142.285, 59.9477 )
 [node name="Heart2" parent="." instance=ExtResource( 11 )]
 position = Vector2( 160.548, 60.1704 )
 
+[node name="Potion" parent="." instance=ExtResource( 13 )]
+position = Vector2( 56.572, 147.221 )
+
+[node name="Potion2" parent="." instance=ExtResource( 13 )]
+position = Vector2( 165.039, 138.757 )
+
+[node name="Potion3" parent="." instance=ExtResource( 13 )]
+position = Vector2( 272.615, 51.8948 )
+
+[node name="Potion4" parent="." instance=ExtResource( 13 )]
+position = Vector2( 117.376, 68.3764 )
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 158.746, 77.7817 )
+position = Vector2( 159.471, 91.5398 )
 
 [node name="EnemyBat" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 223.678, 92.9191 )
@@ -553,6 +564,13 @@ pause_mode = 2
 script = ExtResource( 12 )
 
 [node name="Interface" parent="UILayer" instance=ExtResource( 3 )]
+
+[node name="NinePatchRect" parent="UILayer/Interface" index="0"]
+margin_top = 4.33183
+margin_bottom = -5.66818
+
+[node name="KeyContainer" parent="UILayer/Interface/NinePatchRect" index="2"]
+color = 2
 
 [node name="PauseMenu" type="Control" parent="UILayer"]
 visible = false
@@ -608,26 +626,7 @@ margin_top = 54.0
 margin_right = 88.0
 margin_bottom = 74.0
 text = "Quit"
-
-[node name="Potion" parent="." instance=ExtResource( 11 )]
-position = Vector2( 126.307, 50.3969 )
-
-[node name="Potion2" parent="." instance=ExtResource( 11 )]
-position = Vector2( 175.444, 137.961 )
-
-[node name="Potion3" parent="." instance=ExtResource( 11 )]
-position = Vector2( 256.709, 45.3572 )
-
-[node name="Potion4" parent="." instance=ExtResource( 11 )]
-position = Vector2( 116.858, 114.338 )
 [connection signal="pressed" from="UILayer/PauseMenu/PanelContainer/CenterContainer/VBoxContainer/Continue" to="UILayer" method="_on_Continue_pressed"]
 [connection signal="pressed" from="UILayer/PauseMenu/PanelContainer/CenterContainer/VBoxContainer/Quit" to="UILayer" method="_on_Quit_pressed"]
-[connection signal="body_entered" from="Potion" to="YSort/Player" method="_on_Potion_body_entered"]
-[connection signal="body_entered" from="Potion2" to="YSort/Player" method="_on_Potion_body_entered"]
-[connection signal="body_entered" from="Potion3" to="YSort/Player" method="_on_Potion_body_entered"]
-[connection signal="body_entered" from="Potion4" to="YSort/Player" method="_on_Potion_body_entered"]
-
-[node name="KeyContainer" parent="UILayer/Interface/NinePatchRect" index="2"]
-color = 2
 
 [editable path="UILayer/Interface"]

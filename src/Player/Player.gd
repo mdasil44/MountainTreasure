@@ -71,14 +71,20 @@ func _process(delta: float) -> void:
 	pass
 
 
-func increment_keys():
-	stats.set_keys(stats.keys + 1)
-
 func roll_state(delta):
 	motion = rollVector * MAX_SPEED * ROLL_SPEED
 	hurtBox.start_invincibility(invincibility_time)
 	animationState.travel("Roll")
 	motion = move_and_slide(stats.speed_mod*motion)
+
+
+func increment_keys():
+	stats.set_keys(stats.keys + 1)
+
+
+func increment_health(value):
+	stats.set_health(stats.health + value)
+
 
 func increment_max_health():
 	stats.set_max_health(stats.max_health + 4)
@@ -111,7 +117,7 @@ func move_state(delta):
 		state = ATTACK
 	if Input.is_action_just_pressed("shoot"):
 		shoot_fireball(axis)
-	if Input.is_action_just_pressed(" roll"):
+	if Input.is_action_just_pressed("roll"):
 		state = ROLL
 
 func shoot_fireball(direction):
@@ -224,11 +230,9 @@ func game_over_lose():
 	queue_free()
 	var gameOver = gameOverScreen.instance()
 	get_parent().get_parent().add_child(gameOver)
+	gameOver.setTitle(false)
 	#get_tree().paused
 
-
-func _on_Potion_body_entered(body):
-	stats.health += 4
 
 func add_trail():
 	var trail = trail_scene.instance()
