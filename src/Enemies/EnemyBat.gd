@@ -13,6 +13,7 @@ export var knockback = 2
 var target
 var hit_pos
 var ray_visual = true
+var laser_color = Color(1.0, 0.329, 0.298, 1.0)
 
 enum{
 	IDLE,
@@ -27,8 +28,13 @@ var player: Node = null
 var action = null
 var stagger_timer = Timer.new()
 
+var chasing_trail = false
+
+
 func _ready() -> void:
-	get_node("PlayerDetectionZone/CollisionShape2D").shape.radius = detection_radius
+	var shape = CircleShape2D.new()
+	shape.set_radius(detection_radius)
+	$PlayerDetectionZone/CollisionShape2D.set_shape(shape)
 	
 	stagger_timer.set_timer_process_mode(Timer.TIMER_PROCESS_PHYSICS)
 	stagger_timer.set_wait_time(action_stagger_time)
@@ -44,8 +50,10 @@ func _physics_process(delta):
 		WANDER:
 			pass
 		CHASE:
-			player = playerDetZone.player
-			if player != null:
+			if playerDetZone.player != null:
+				player = playerDetZone.player
+				chasing_trail = true
+				
 				var playerDirection = (player.global_position - global_position).normalized()
 				
 				if stagger_timer.get_time_left() <=0:
@@ -66,8 +74,20 @@ func _physics_process(delta):
 					# if the action was performed stagger the enemy (stop for a time)
 					if action_performed:
 						stagger_timer.start()
+			elif player != null and chasing_trail:
+				var look = get_node("RayCast2D")
+				
+				for trail in player.trail_list:
+					look.cast_to = trail.position - position
+					look.force_raycast_update()
+					
+					if !look.is_colliding():
+						var trailDirection = look.cast_to.normalized()
+						vel = vel.move_toward(trailDirection * MAX_SPEED, ACCELERATION * delta)
+						break
+			if player == null:
+				state = IDLE
 	vel = move_and_slide(vel)
-
 
 
 func seek_player():

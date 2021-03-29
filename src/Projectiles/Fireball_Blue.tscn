@@ -1,0 +1,25 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/Projectiles/FireballAnimated/blue/keyframes/6.png" type="Texture" id=1]
+[ext_resource path="res://assets/Projectiles/FireballAnimated/blue/keyframes/5.png" type="Texture" id=2]
+[ext_resource path="res://assets/Projectiles/FireballAnimated/blue/keyframes/4.png" type="Texture" id=3]
+[ext_resource path="res://assets/Projectiles/FireballAnimated/blue/keyframes/2.png" type="Texture" id=4]
+[ext_resource path="res://assets/Projectiles/FireballAnimated/blue/keyframes/3.png" type="Texture" id=5]
+[ext_resource path="res://src/Projectiles/Fireball.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/Projectiles/FireballAnimated/blue/keyframes/1.png" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Fireball_Blue" instance=ExtResource( 6 )]
+collision_mask = 9
+shot_spread = 0.01
+
+[node name="FireballAnimation" parent="." index="0"]
+frames = SubResource( 1 )
+frame = 0

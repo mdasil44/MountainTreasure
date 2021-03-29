@@ -38,17 +38,17 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=7]
-radius = 12.0751
+radius = 4.03112
 
 [sub_resource type="CapsuleShape2D" id=8]
-radius = 12.8153
-height = 8.97624
+radius = 6.0
+height = 6.0
 
-[sub_resource type="CircleShape2D" id=9]
-radius = 130.969
+[sub_resource type="CircleShape2D" id=11]
+radius = 50.0
 
 [sub_resource type="CircleShape2D" id=10]
-radius = 7.33247
+radius = 7.28316
 
 [node name="EnemyBat" type="KinematicBody2D" groups=[
 "enemy",
@@ -60,7 +60,7 @@ script = ExtResource( 4 )
 [node name="BatAnimation" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "BatFly"
-frame = 2
+frame = 3
 playing = true
 offset = Vector2( 0, -12 )
 
@@ -78,12 +78,12 @@ position = Vector2( 0, -13 )
 shape = SubResource( 8 )
 
 [node name="Stats" parent="." instance=ExtResource( 5 )]
-max_health = 3
+default_max_health = 3
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 6 )]
 
 [node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
-shape = SubResource( 9 )
+shape = SubResource( 11 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 7 )]
 collision_mask = 4
@@ -95,6 +95,9 @@ shape = SubResource( 10 )
 [node name="HitAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 8 )
 attenuation = 0.0441942
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+cast_to = Vector2( 0, 0 )
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 

@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/UI/TitleScreen.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.235294, 0.235294, 0.235294, 1 )
+
+[node name="TitleScreen" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 320.0
+margin_bottom = 180.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 100.0
+margin_top = 48.0
+margin_right = 219.0
+margin_bottom = 132.0
+custom_constants/separation = 15
+
+[node name="MountainTreasureLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 119.0
+margin_bottom = 14.0
+text = "Mountain Treasure"
+
+[node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 29.0
+margin_right = 119.0
+margin_bottom = 49.0
+text = "Start"
+
+[node name="ExitButton" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 64.0
+margin_right = 119.0
+margin_bottom = 84.0
+text = "Exit"
+[connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
