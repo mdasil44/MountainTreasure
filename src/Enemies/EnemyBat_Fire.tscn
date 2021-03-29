@@ -8,7 +8,7 @@ script = ExtResource( 2 )
 
 [node name="BatAnimation" parent="." index="0"]
 modulate = Color( 0.866667, 0.698039, 0.192157, 1 )
-frame = 1
+frame = 2
 
 [node name="Stats" parent="." index="4"]
 max_health = 2
