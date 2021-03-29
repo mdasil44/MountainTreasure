@@ -2,19 +2,21 @@ extends KinematicBody2D
 
 enum{
 	MOVE,
-	ATTACK
+	ATTACK,
+	ROLL
 }
-
 var state = MOVE
 export var MAX_SPEED = 100
 export var ACCELERATION = 750
 export var invincibility_time = 0.5
+export var ROLL_SPEED = 1.2
 export var fireball_mana = 5
 export var detection_radius = 100
 export var lockon_angle = 90 # degrees; angle at which player can lock on attack in front of them
 # if enemy is within player angle +/- 0.5*lockon_angle then lock on
 var motion = Vector2.ZERO
 var stats = PlayerStats
+var rollVector = Vector2.DOWN # we don't want roll vector to be 0
 
 onready var animationPlayer = $AnimationPlayer # $ is access to the node in the tree
 onready var animationTree = $AnimationTree
@@ -22,14 +24,14 @@ onready var animationState = animationTree.get("parameters/playback") # gets the
 onready var swordHB = $HitboxAxis/SwordHitBox
 onready var hurtBox = $Hurtbox
 onready var FireballPos = $FireballPosition
-
+const gameOverScreen = preload("res://src/UI/GameOverScreen.tscn")
 var fireball = preload("res://src/Projectiles/Fireball_Blue.tscn")
 
 var close_enemies = {} # empty dictionary to store nearby enemies for auto aim
 
 
 func _ready():
-	stats.connect("no_health", self, "queue_free")
+	stats.connect("no_health", self, "game_over_lose")
 	animationTree.active = true
 	
 	var shape = CircleShape2D.new()
@@ -43,6 +45,8 @@ func _physics_process(delta):
 			move_state(delta)
 		ATTACK:
 			attack_state(delta)
+		ROLL:
+			roll_state(delta)
 	
 	if stats.frozen:
 		modulate = Color("80deff")
@@ -69,6 +73,11 @@ func _process(delta: float) -> void:
 func increment_keys():
 	stats.set_keys(stats.keys + 1)
 
+func roll_state(delta):
+	motion = rollVector * MAX_SPEED * ROLL_SPEED
+	hurtBox.start_invincibility(invincibility_time)
+	animationState.travel("Roll")
+	motion = move_and_slide(stats.speed_mod*motion)
 
 # function to move the player
 func move_state(delta):
@@ -79,9 +88,11 @@ func move_state(delta):
 		apply_friction(ACCELERATION * delta)
 	# else the player is moving, apply movement values
 	else:
+		rollVector = axis
 		animationTree.set("parameters/Idle/blend_position", axis)
 		animationTree.set("parameters/Run/blend_position", axis)
 		animationTree.set("parameters/Attack/blend_position", axis)
+		animationTree.set("parameters/Roll/blend_position", axis)
 		animationState.travel("Run")
 		apply_movement(axis * 2*ACCELERATION * delta)
 	
@@ -94,7 +105,8 @@ func move_state(delta):
 		state = ATTACK
 	if Input.is_action_just_pressed("shoot"):
 		shoot_fireball(axis)
-
+	if Input.is_action_just_pressed(" roll"):
+		state = ROLL
 
 func shoot_fireball(direction):
 	var curr_position = global_position
@@ -153,6 +165,9 @@ func attack_state(delta):
 func attack_anim_finished():
 	state = MOVE
 
+func roll_anim_finished():
+	motion = Vector2.ZERO
+	state = MOVE
 
 func get_input_axis():
 	var axis = Vector2.ZERO
@@ -198,3 +213,13 @@ func _on_EnemyDetectionZone_body_entered(body: Node) -> void:
 func _on_EnemyDetectionZone_body_exited(body: Node) -> void:
 	if close_enemies.has(body):
 		close_enemies.erase(body)
+
+func game_over_lose():
+	queue_free()
+	var gameOver = gameOverScreen.instance()
+	get_parent().get_parent().add_child(gameOver)
+	#get_tree().paused
+
+
+func _on_Potion_body_entered(body):
+	stats.health += 4
