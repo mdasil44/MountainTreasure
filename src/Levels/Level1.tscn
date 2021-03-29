@@ -4,7 +4,7 @@
 [ext_resource path="res://src/Enemies/EnemyBat.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Enemies/EnemyBat_Fire.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Enemies/EnemyBat_Ice.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/Player/Player2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Enemies/EnemySlime.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Levels/Level.gd" type="Script" id=7]
 [ext_resource path="res://src/Levels/FadeIn.tscn" type="PackedScene" id=8]
@@ -1933,7 +1933,7 @@ color = 4
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 933.979, 91.0676 )
+position = Vector2( 80.013, 243.062 )
 
 [node name="Room1" type="YSort" parent="YSort"]
 
