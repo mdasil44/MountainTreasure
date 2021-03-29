@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Enemies/EnemyBat.tscn" type="PackedScene" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://src/UI/Key.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/Potions/Potion.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/UI/UILayer.gd" type="Script" id=12]
-[ext_resource path="res://src/UI/TitleScreen.tscn" type="PackedScene" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -545,9 +544,6 @@ pause_mode = 2
 script = ExtResource( 12 )
 
 [node name="Interface" parent="UILayer" instance=ExtResource( 3 )]
-
-[node name="TitleScreen" parent="UILayer" instance=ExtResource( 13 )]
-visible = false
 
 [node name="PauseMenu" type="Control" parent="UILayer"]
 visible = false

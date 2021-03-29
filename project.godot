@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Mountain Treasure"
-run/main_scene="res://src/Levels/World.tscn"
+run/main_scene="res://src/UI/TitleScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]
