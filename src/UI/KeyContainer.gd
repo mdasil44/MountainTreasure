@@ -20,8 +20,7 @@ func set_keys(value):
 	if keys > get_child_count():
 		for key in (keys - get_child_count()):
 			var new_key = KEY.instance()
-			new_key.animated = false
-			new_key.get_node("Key").frame = color*5 + type
+			new_key.frame = color*5 + type
 			new_key.global_position = Vector2(-16,-16)
 			add_child(new_key)
 	elif keys < get_child_count():
@@ -32,16 +31,12 @@ func set_keys(value):
 func _ready():
 	self.keys = PlayerStats.keys
 	PlayerStats.connect("keys_changed", self, "set_keys")
-	
-	for key in keys:
-		var new_key = KEY.instance()
-		new_key.get_node("Key").frame = color * 5 + type
-		add_child(new_key)
 
 
 func _physics_process(delta: float) -> void:
 	for key in get_children():
 		var index = key.get_index()
+		key.frame = color*5 + type
 		
 		var x = self.rect_global_position.x + self.rect_size.x - (index % KEY_ROW_SIZE) * KEY_OFFSET
 		var y = self.rect_global_position.y + (index / KEY_ROW_SIZE) * KEY_OFFSET

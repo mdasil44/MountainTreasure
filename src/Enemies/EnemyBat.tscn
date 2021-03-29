@@ -60,6 +60,7 @@ script = ExtResource( 4 )
 [node name="BatAnimation" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "BatFly"
+frame = 2
 playing = true
 offset = Vector2( 0, -12 )
 
@@ -94,6 +95,9 @@ shape = SubResource( 10 )
 [node name="HitAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 8 )
 attenuation = 0.0441942
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+cast_to = Vector2( 0, 0 )
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 

@@ -16,15 +16,10 @@ func _ready() -> void:
 	
 	if animated:
 		$AnimationPlayer.current_animation = "Floating"
+		$KeyShadow.visible = 1
 	else:
 		$AnimationPlayer.current_animation = "[stop]"
-
-
-func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_focus_next"):
-		$AnimationPlayer.current_animation = "Floating"
-	if Input.is_action_just_pressed("ui_focus_prev"):
-		$AnimationPlayer.current_animation = "[stop]"
+		$KeyShadow.visible = 0
 
 
 func _on_CollisionArea_body_entered(body: Node) -> void:

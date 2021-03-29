@@ -609,6 +609,10 @@ collision_mask = 16
 
 [node name="CollisionShape2D" parent="EnemyDetectionZone" index="0"]
 shape = SubResource( 37 )
+
+[node name="TrailTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="body_entered" from="EnemyDetectionZone" to="." method="_on_EnemyDetectionZone_body_entered"]
 [connection signal="body_exited" from="EnemyDetectionZone" to="." method="_on_EnemyDetectionZone_body_exited"]
