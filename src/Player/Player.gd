@@ -57,10 +57,6 @@ func _physics_process(delta):
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_end"):
-		stats.set_keys(stats.keys + 1)
-	if Input.is_action_just_pressed("ui_home"):
-		stats.set_keys(stats.keys - 1)
 	# test option: press Q to quit game
 	#if Input.is_key_pressed(KEY_Q):
 	#	get_tree().quit()
@@ -73,6 +69,11 @@ func _process(delta: float) -> void:
 
 func increment_keys():
 	stats.set_keys(stats.keys + 1)
+
+
+func increment_max_health():
+	stats.set_max_health(stats.max_health + 4)
+	stats.set_health(stats.health + 4)
 
 
 # function to move the player
