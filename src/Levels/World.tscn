@@ -524,19 +524,15 @@ position = Vector2( 160.548, 60.1704 )
 
 [node name="Potion" parent="." instance=ExtResource( 13 )]
 position = Vector2( 56.572, 147.221 )
-type = 0
 
 [node name="Potion2" parent="." instance=ExtResource( 13 )]
 position = Vector2( 165.039, 138.757 )
-type = 0
 
 [node name="Potion3" parent="." instance=ExtResource( 13 )]
 position = Vector2( 272.615, 51.8948 )
-type = 0
 
 [node name="Potion4" parent="." instance=ExtResource( 13 )]
 position = Vector2( 117.376, 68.3764 )
-type = 0
 
 [node name="YSort" type="YSort" parent="."]
 

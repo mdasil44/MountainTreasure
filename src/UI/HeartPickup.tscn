@@ -35,7 +35,7 @@ scale = Vector2( 1.25, 1 )
 texture = ExtResource( 2 )
 
 [node name="Heart" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, -0.326067 )
+position = Vector2( 0, 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Floating = SubResource( 1 )

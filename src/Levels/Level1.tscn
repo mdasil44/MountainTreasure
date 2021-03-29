@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://assets/Levels/sheet.png" type="Texture" id=1]
 [ext_resource path="res://src/Enemies/EnemyBat.tscn" type="PackedScene" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://src/Levels/FadeIn.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/UI/Interface.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/UI/KeyPickup.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/Levels/LevelTransition.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/Enemies/EnemyBatBoss_Fire.tscn" type="PackedScene" id=12]
 
 [sub_resource type="TileSet" id=1]
 0/name = "sheet.png 0"
@@ -1870,8 +1872,6 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 26/shapes = [  ]
 26/z_index = 0
 
-[sub_resource type="RectangleShape2D" id=27]
-
 [node name="Level1" type="Node2D"]
 script = ExtResource( 7 )
 next_scene = "res://src/Levels/Level2.tscn"
@@ -1934,7 +1934,7 @@ color = 4
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 933.979, 91.0676 )
+position = Vector2( 80.013, 243.062 )
 
 [node name="Room1" type="YSort" parent="YSort"]
 
@@ -1950,13 +1950,10 @@ position = Vector2( 628.128, 418.565 )
 [node name="EnemyBat_Fire" parent="YSort/Room1" instance=ExtResource( 3 )]
 position = Vector2( 744.172, 460.61 )
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
+[node name="EnemyBat_Fire2" parent="YSort/Room1" instance=ExtResource( 12 )]
+position = Vector2( 907, 256 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 975.835, 33.6736 )
-shape = SubResource( 27 )
+[node name="LevelTransition" parent="." instance=ExtResource( 11 )]
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
@@ -1973,6 +1970,6 @@ color = 4
 
 [node name="FadeIn" parent="UILayer" instance=ExtResource( 8 )]
 visible = false
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="LevelTransition" to="." method="_on_LevelTransition_body_entered"]
 
 [editable path="UILayer/Interface"]
