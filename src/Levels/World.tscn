@@ -1,16 +1,18 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Enemies/EnemyBat.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/UI/HealthUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/UI/Interface.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/World/DirtTileset.png" type="Texture" id=4]
 [ext_resource path="res://assets/World/CliffTileset.png" type="Texture" id=5]
 [ext_resource path="res://assets/World/GrassBackground.png" type="Texture" id=6]
 [ext_resource path="res://src/Enemies/EnemyBat_Fire.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Enemies/EnemyBat_Ice.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Enemies/EnemySlime.tscn" type="PackedScene" id=9]
-[ext_resource path="res://src/Enemies/EnemyBatBoss_Fire.tscn" type="PackedScene" id=10]
-[ext_resource path="res://src/Enemies/EnemyBossSlimeMain.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/UI/KeyPickup.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/UI/HeartPickup.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/UI/UILayer.gd" type="Script" id=12]
+[ext_resource path="res://src/Potions/Potion.tscn" type="PackedScene" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -510,37 +512,125 @@ collision_mask = 2147483648
 format = 1
 tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 1, -65535, 0, 1, -65534, 0, 1, -65533, 0, 1, -65532, 0, 1, -65531, 0, 1, -65530, 0, 1, -65529, 0, 1, -65528, 0, 1, -65527, 0, 1, -65526, 0, 2, 65535, 0, 65536, 0, 0, 65541, 1, 0, 131073, 2, 0, 131073, 3, 0, 131073, 4, 0, 131073, 5, 0, 131073, 6, 0, 131073, 7, 0, 131073, 8, 0, 131073, 9, 0, 65542, 10, 0, 65538, 131071, 0, 65536, 65536, 0, 65538, 65545, 0, 131072, 65546, 0, 131074, 196607, 0, 65536, 131072, 0, 65538, 262143, 0, 65536, 196608, 0, 65538, 327679, 0, 65536, 262144, 0, 65538, 262153, 0, 0, 262154, 0, 2, 393215, 0, 65536, 327680, 0, 131077, 327681, 0, 1, 327682, 0, 1, 327683, 0, 1, 327684, 0, 1, 327685, 0, 1, 327686, 0, 1, 327687, 0, 1, 327688, 0, 1, 327689, 0, 131078, 327690, 0, 65538, 458751, 0, 131072, 393216, 0, 131073, 393217, 0, 131073, 393218, 0, 131073, 393219, 0, 131073, 393220, 0, 131073, 393221, 0, 131073, 393222, 0, 131073, 393223, 0, 131073, 393224, 0, 131073, 393225, 0, 131073, 393226, 0, 131074 )
 
+[node name="Key" parent="." instance=ExtResource( 10 )]
+position = Vector2( 157, 43 )
+color = 2
+
+[node name="Heart" parent="." instance=ExtResource( 11 )]
+position = Vector2( 142.285, 59.9477 )
+
+[node name="Heart2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 160.548, 60.1704 )
+
+[node name="Potion" parent="." instance=ExtResource( 13 )]
+position = Vector2( 56.572, 147.221 )
+type = 0
+
+[node name="Potion2" parent="." instance=ExtResource( 13 )]
+position = Vector2( 165.039, 138.757 )
+type = 0
+
+[node name="Potion3" parent="." instance=ExtResource( 13 )]
+position = Vector2( 272.615, 51.8948 )
+type = 0
+
+[node name="Potion4" parent="." instance=ExtResource( 13 )]
+position = Vector2( 117.376, 68.3764 )
+type = 0
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 158.746, 77.7817 )
+position = Vector2( 159.471, 91.5398 )
 
 [node name="EnemyBat" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 459.287, -44.176 )
+position = Vector2( 223.678, 92.9191 )
 
 [node name="EnemyBat2" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 620.309, -27.3893 )
+position = Vector2( 223.258, 61.3854 )
 
 [node name="EnemyBat3" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 815.509, -20.7227 )
+position = Vector2( 223.678, 136.225 )
 
 [node name="EnemyBat_Fire" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 467.3, 144.068 )
+position = Vector2( 68.75, 93.5 )
 collision_mask = 1
 
 [node name="EnemyBat_Ice" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 797.185, 143.032 )
+position = Vector2( 75.75, 61 )
 collision_mask = 1
 
 [node name="Slime" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( 646.174, 283.467 )
-
-[node name="EnemyBat_Boss" parent="YSort" instance=ExtResource( 10 )]
-position = Vector2( -183.262, -40.176 )
-
-[node name="Node2D" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( 83.6233, 86.9907 )
+position = Vector2( 115.983, 140.143 )
 
 [node name="UILayer" type="CanvasLayer" parent="."]
+pause_mode = 2
+script = ExtResource( 12 )
 
-[node name="HealthUI" parent="UILayer" instance=ExtResource( 3 )]
+[node name="Interface" parent="UILayer" instance=ExtResource( 3 )]
+
+[node name="NinePatchRect" parent="UILayer/Interface" index="0"]
+margin_top = 4.33183
+margin_bottom = -5.66818
+
+[node name="KeyContainer" parent="UILayer/Interface/NinePatchRect" index="2"]
+color = 2
+
+[node name="PauseMenu" type="Control" parent="UILayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -51.5
+margin_top = -43.5
+margin_right = 51.5
+margin_bottom = 43.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="UILayer/PauseMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -51.0
+margin_top = -38.0
+margin_right = 51.0
+margin_bottom = 38.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="UILayer/PauseMenu/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 95.0
+margin_bottom = 81.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/PauseMenu/PanelContainer/CenterContainer"]
+margin_right = 88.0
+margin_bottom = 74.0
+custom_constants/separation = 10
+
+[node name="GamePaused" type="Label" parent="UILayer/PauseMenu/PanelContainer/CenterContainer/VBoxContainer"]
+margin_right = 88.0
+margin_bottom = 14.0
+text = "Game Paused"
+
+[node name="Continue" type="Button" parent="UILayer/PauseMenu/PanelContainer/CenterContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 88.0
+margin_bottom = 44.0
+text = "Continue"
+
+[node name="Quit" type="Button" parent="UILayer/PauseMenu/PanelContainer/CenterContainer/VBoxContainer"]
+margin_top = 54.0
+margin_right = 88.0
+margin_bottom = 74.0
+text = "Quit"
+[connection signal="pressed" from="UILayer/PauseMenu/PanelContainer/CenterContainer/VBoxContainer/Continue" to="UILayer" method="_on_Continue_pressed"]
+[connection signal="pressed" from="UILayer/PauseMenu/PanelContainer/CenterContainer/VBoxContainer/Quit" to="UILayer" method="_on_Quit_pressed"]
+
+[editable path="UILayer/Interface"]
