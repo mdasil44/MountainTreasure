@@ -6,7 +6,7 @@ func _ready() -> void:
 
 
 func _on_StartButton_pressed():
-	get_tree().change_scene("res://src/Levels/World.tscn")
+	get_tree().change_scene("res://src/Levels/Level1.tscn")
 	queue_free()
 	#visible = false
 
