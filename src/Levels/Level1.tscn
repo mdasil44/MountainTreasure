@@ -1950,8 +1950,8 @@ position = Vector2( 628.128, 418.565 )
 [node name="EnemyBat_Fire" parent="YSort/Room1" instance=ExtResource( 3 )]
 position = Vector2( 744.172, 460.61 )
 
-[node name="EnemyBat_Fire2" parent="YSort/Room1" instance=ExtResource( 12 )]
-position = Vector2( 907, 256 )
+[node name="EnemyBat_Fire" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( 920.732, 240.533 )
 
 [node name="LevelTransition" parent="." instance=ExtResource( 11 )]
 

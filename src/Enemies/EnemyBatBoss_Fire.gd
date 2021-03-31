@@ -6,8 +6,7 @@ var fireball = preload("res://src/Projectiles/Fireball.tscn")
 var fireball1 = preload("res://src/Projectiles/Fireball.tscn")
 var fireball2 = preload("res://src/Projectiles/Fireball.tscn")
 
-var bat1 = preload("res://src/Enemies/EnemyBat.tscn")
-var bat2 = preload("res://src/Enemies/EnemyBat.tscn")
+var bat = preload("res://src/Enemies/EnemyBat.tscn")
 
 onready var BatPos = $BatPosition1
 onready var BatPos1 = $BatPosition2
@@ -40,22 +39,34 @@ func _physics_process(delta: float) -> void:
 		
 		count = 1
 		
-		var bat_instance1 = bat1.instance()
-		var bat_instance2 = bat2.instance()
+		var bat_instance1 = bat.instance()
+		var bat_instance2 = bat.instance()
 		
 		BatPos.add_child(bat_instance1)
 		BatPos1.add_child(bat_instance2)
+		
+		for child in BatPos.get_children() + BatPos1.get_children():
+			child.set_as_toplevel(true)
 		
 	elif stats.health == 1 && count == 1:
 		
 		count = 2
 		
-		var bat_instance1 = bat1.instance()
-		var bat_instance2 = bat2.instance()
+		var bat_instance1 = bat.instance()
+		var bat_instance2 = bat.instance()
 		
 		BatPos.add_child(bat_instance1)
 		BatPos1.add_child(bat_instance2)
 		
+		for child in BatPos.get_children() + BatPos1.get_children():
+			child.set_as_toplevel(true)
+	
+	if player != null and chasing_trail:
+		for child in BatPos.get_children() + BatPos1.get_children():
+			if child.is_in_group("enemy"):
+				child.state = CHASE
+				child.player = player
+				child.chasing_trail = true
 
 
 func shoot_fireball(target) -> bool:
