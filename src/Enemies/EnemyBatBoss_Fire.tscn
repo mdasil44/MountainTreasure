@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Enemies/EnemyBatBoss_Fire.gd" type="Script" id=1]
+[ext_resource path="res://src/Enemies/EnemyBat.tscn" type="PackedScene" id=2]
+
+[node name="EnemyBat_Fire" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+
+[node name="BatAnimation" parent="." index="0"]
+modulate = Color( 0.866667, 0.698039, 0.192157, 1 )
+position = Vector2( 5.96046e-08, -2.52435e-29 )
+scale = Vector2( 2.46338, 1.74409 )
+frame = 0
+
+[node name="BatShadow" parent="." index="1"]
+position = Vector2( 0.507862, 0 )
+scale = Vector2( 3.53565, 2.14095 )
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( 0, -25.8976 )
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( 0, -25.8976 )
+
+[node name="FireballPosition" type="Position2D" parent="." index="7"]
+position = Vector2( 10, 0 )
+
+[node name="FireballPosition1" type="Position2D" parent="." index="8"]
+position = Vector2( 10, -14.8819 )
+
+[node name="FireballPosition2" type="Position2D" parent="." index="9"]
+position = Vector2( 10, 11.7071 )
+
+[node name="BatPosition1" type="Position2D" parent="." index="10"]
+position = Vector2( 19.707, -33.9307 )
+
+[node name="BatPosition2" type="Position2D" parent="." index="11"]
+position = Vector2( 19.707, -8.5638 )
+
+[editable path="Hurtbox"]
+
+[editable path="PlayerDetectionZone"]
+
+[editable path="Hitbox"]

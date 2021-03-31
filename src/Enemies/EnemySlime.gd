@@ -84,7 +84,7 @@ func _physics_process(delta):
 				var look = get_node("RayCast2D")
 				
 				for trail in player.trail_list:
-					look.cast_to = trail.position - position
+					look.cast_to = trail.global_position/2 - global_position
 					look.force_raycast_update()
 					
 					if !look.is_colliding():

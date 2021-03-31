@@ -20,7 +20,7 @@ func setTitle(win: bool):
 
 func _on_Restart_pressed():
 	PlayerStats.reset()
-	get_tree().change_scene("res://src/Levels/World.tscn")
+	get_tree().change_scene("res://src/Levels/Level1.tscn")
 
 
 func _on_Quit_pressed():
