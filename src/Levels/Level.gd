@@ -33,8 +33,6 @@ func _ready() -> void:
 	bossRoom = get_tree().get_nodes_in_group("BossRoom")
 
 func _physics_process(delta):
-	print(bossRoom)
-	print(bossRoom[0].get_child_count() == 0 if not bossRoom.empty() else "hi")
 	if not bossRoom.empty() and bossRoom[0].get_child_count() == 0:
 		$LevelTransition/KeyRequirement.visible = true
 	
