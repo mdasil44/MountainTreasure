@@ -6,12 +6,13 @@ export (String) var next_scene
 
 
 var potion = preload("res://src/Potions/Potion.tscn")
+var key = preload("res://src/UI/KeyPickup.tscn")
 
-var room_potions = [potion, potion, potion, potion, potion, potion]
+var room_potions = [key, potion, potion, key, potion]
 
-var rooms = [1, 1, 1, 1, 1, 1]
+var rooms = [1, 1, 1, 1, 1, 1, 1]
 
-onready var positions = [$YSort/Room1/Position2D, $YSort/Room2/Position2D, $YSort/Room3/Position2D, $YSort/Room4/Position2D, $YSort/Room5/Position2D, $YSort/Room6/Position2D]
+onready var positions = [$YSort/Room1/Position2D, $YSort/Room2/Position2D, $YSort/Room3/Position2D, $YSort/Room4/Position2D, $YSort/Room5/Position2D, $YSort/Room6/Position2D, $YSort/Room7/Position2D]
 
 var rng = RandomNumberGenerator.new()
 
@@ -29,21 +30,21 @@ func _ready() -> void:
 	
 	$LevelTransition.connect("body_entered", self, "next_level")
 
-	roomNodes = get_tree().get_nodes_in_group("Level1_Rooms")
+	roomNodes = get_tree().get_nodes_in_group("Level_Rooms")
 	bossRoom = get_tree().get_nodes_in_group("BossRoom")
 
 func _physics_process(delta):
-	if not bossRoom.empty() and bossRoom[0].get_child_count() == 0:
+	if not bossRoom.empty() and bossRoom[0].get_child_count() == 1:
 		$LevelTransition/KeyRequirement.visible = true
 	
 	if roomNodes.empty():
 		return
 	
-	for i in 6:
+	for i in 7:
 		if roomNodes[i].get_child_count() == 1 && rooms[i] == 1:
 			rooms[i] = 0
-			spawn_potion(i)
-
+			if !room_potions.empty():
+				spawn_potion(i)
 
 func next_level(body: Node) -> void:
 	if body.is_in_group("player"):
@@ -55,12 +56,16 @@ func next_level(body: Node) -> void:
 			body.stats.set_keys(0)
 			
 func spawn_potion(var index):
-	rng.randomize()
-	var randomNum = rng.randi_range(0,1)
-	print(randomNum)
-	var potion_instance = room_potions[index].instance()
-	potion_instance.type = randomNum
-	positions[index].add_child(potion_instance)
+	if index == 6:
+		var object_instance = key.instance()
+		positions[index].add_child(object_instance)
+	else:
+		rng.randomize()
+		var randomNum = rng.randi_range(0, room_potions.size() - 1)
+		var object_instance = room_potions[randomNum].instance()
+		room_potions.remove(randomNum)
+
+		positions[index].add_child(object_instance)
 	
 	
 	

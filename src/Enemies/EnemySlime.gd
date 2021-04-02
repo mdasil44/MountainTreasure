@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+signal slime_dead()
 const EnemyDeathEffect = preload("res://src/Effects/BatDeathAnimation.tscn")
 onready var stats = $Stats
 var vel = Vector2.ZERO
@@ -113,6 +114,8 @@ func _on_Hurtbox_area_entered(area):
 
 func _on_Stats_no_health():
 	# make slime disappear
+	emit_signal("slime_dead")
+	
 	queue_free()
 	var enemyDeath = EnemyDeathEffect.instance()
 	get_parent().add_child(enemyDeath)
