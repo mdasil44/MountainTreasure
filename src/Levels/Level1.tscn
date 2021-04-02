@@ -1953,17 +1953,13 @@ margin_right = 429.871
 margin_bottom = 51.107
 
 [node name="Tutorial4" parent="." instance=ExtResource( 13 )]
-margin_left = 415.871
-margin_top = 37.107
-margin_right = 429.871
-margin_bottom = 51.107
+margin_left = 26.8704
+margin_top = 143.57
+margin_right = 40.8704
+margin_bottom = 157.57
 
 [node name="Goal" parent="Tutorial4" index="4"]
 visible = true
-margin_left = -390.107
-margin_top = 106.453
-margin_right = -350.107
-margin_bottom = 146.453
 
 [node name="Potions" parent="Tutorial4" index="5"]
 visible = false
