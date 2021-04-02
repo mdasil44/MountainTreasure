@@ -1966,6 +1966,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [node name="Level2" type="Node2D"]
 script = ExtResource( 2 )
+required_keys = 3
 next_scene = "res://src/UI/GameOverScreen.tscn"
 
 [node name="LightIsland" type="TileMap" parent="."]

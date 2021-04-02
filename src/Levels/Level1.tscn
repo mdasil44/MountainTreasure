@@ -1873,6 +1873,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [node name="Level1" type="Node2D"]
 script = ExtResource( 7 )
+required_keys = 3
 next_scene = "res://src/Levels/Level2.tscn"
 
 [node name="LightIsland" type="TileMap" parent="."]
@@ -2008,16 +2009,16 @@ position = Vector2( 55.8801, 81.1469 )
 ]]
 
 [node name="Position2D" type="Position2D" parent="YSort/Room1"]
-position = Vector2( 119.61, 77.5431 )
+position = Vector2( 56.2051, 243.731 )
 
 [node name="EnemyBat" parent="YSort/Room1" instance=ExtResource( 2 )]
-position = Vector2( 49.246, 66.8861 )
+position = Vector2( 99.3025, 240.415 )
 
 [node name="EnemyBat2" parent="YSort/Room1" instance=ExtResource( 2 )]
-position = Vector2( 105.562, 99.2125 )
+position = Vector2( 40.1548, 287.425 )
 
 [node name="EnemyBat3" parent="YSort/Room1" instance=ExtResource( 2 )]
-position = Vector2( 189.694, 69.8456 )
+position = Vector2( 39.5245, 223.352 )
 
 [node name="Room2" type="YSort" parent="YSort" groups=[
 "Level_Rooms",
