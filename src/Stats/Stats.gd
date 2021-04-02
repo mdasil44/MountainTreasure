@@ -60,6 +60,7 @@ func reset():
 	set_max_health(default_max_health)
 	set_health(max_health)
 	set_mana(max_mana)
+	set_keys(0)
 
 
 func set_health(value):

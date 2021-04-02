@@ -1744,6 +1744,7 @@ position = Vector2( 880.623, 129.185 )
 [node name="Interface" parent="UILayer" instance=ExtResource( 5 )]
 
 [node name="FadeIn" parent="UILayer" instance=ExtResource( 4 )]
+visible = false
 [connection signal="body_entered" from="LevelTransition" to="." method="_on_LevelTransition_body_entered"]
 
 [editable path="UILayer/Interface"]
