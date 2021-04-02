@@ -1,12 +1,17 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/UI/GameOverScreen.gd" type="Script" id=1]
 [ext_resource path="res://src/UI/FadeIn.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Fonts/DroidSans.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://src/Fonts/DroidSans-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/World/Bush.png" type="Texture" id=5]
+[ext_resource path="res://assets/World/Tree.png" type="Texture" id=6]
+[ext_resource path="res://assets/Actors/Player/Player.png" type="Texture" id=7]
+[ext_resource path="res://assets/Actors/Enemies/Bat.png" type="Texture" id=8]
+[ext_resource path="res://assets/World/GrassBackground.png" type="Texture" id=9]
 
 [sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0, 0, 0, 1 )
+bg_color = Color( 0.0901961, 0.129412, 0.14902, 1 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -14,10 +19,12 @@ use_filter = true
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=2]
+outline_size = 1
 use_filter = true
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=3]
+outline_size = 1
 use_filter = true
 font_data = ExtResource( 3 )
 
@@ -29,6 +36,16 @@ script = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+margin_right = 320.0
+margin_bottom = 180.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -56,6 +73,8 @@ margin_top = 39.0
 margin_right = 86.0
 margin_bottom = 64.0
 custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 text = "Restart"
 flat = true
 
@@ -64,8 +83,90 @@ margin_top = 79.0
 margin_right = 86.0
 margin_bottom = 104.0
 custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 text = "Quit"
 flat = true
+
+[node name="Bush" type="Sprite" parent="PanelContainer"]
+position = Vector2( 25.6474, 145.475 )
+texture = ExtResource( 5 )
+
+[node name="Bush2" type="Sprite" parent="PanelContainer"]
+position = Vector2( 67.2717, 158.929 )
+texture = ExtResource( 5 )
+
+[node name="Bush3" type="Sprite" parent="PanelContainer"]
+position = Vector2( 285.484, 79.4647 )
+texture = ExtResource( 5 )
+
+[node name="Bush4" type="Sprite" parent="PanelContainer"]
+position = Vector2( 285.484, 79.4647 )
+texture = ExtResource( 5 )
+
+[node name="Bush5" type="Sprite" parent="PanelContainer"]
+position = Vector2( 20.602, 38.6812 )
+texture = ExtResource( 5 )
+
+[node name="Tree" type="Sprite" parent="PanelContainer"]
+position = Vector2( 35.7381, 98.8054 )
+texture = ExtResource( 6 )
+
+[node name="Tree4" type="Sprite" parent="PanelContainer"]
+position = Vector2( 56.34, 11.7726 )
+texture = ExtResource( 6 )
+
+[node name="Tree2" type="Sprite" parent="PanelContainer"]
+position = Vector2( 262.78, 7.5681 )
+texture = ExtResource( 6 )
+
+[node name="Tree5" type="Sprite" parent="PanelContainer"]
+position = Vector2( 242.178, 50.8743 )
+texture = ExtResource( 6 )
+
+[node name="Tree3" type="Sprite" parent="PanelContainer"]
+position = Vector2( 297.677, 35.3177 )
+texture = ExtResource( 6 )
+
+[node name="Bat" type="Sprite" parent="PanelContainer"]
+position = Vector2( 63.0672, 111.839 )
+texture = ExtResource( 8 )
+hframes = 5
+frame = 2
+
+[node name="Bat4" type="Sprite" parent="PanelContainer"]
+position = Vector2( 75.2602, 45.8289 )
+texture = ExtResource( 8 )
+hframes = 5
+
+[node name="Bat5" type="Sprite" parent="PanelContainer"]
+position = Vector2( 48.772, 67.6922 )
+texture = ExtResource( 8 )
+hframes = 5
+frame = 2
+
+[node name="Bat2" type="Sprite" parent="PanelContainer"]
+position = Vector2( 50.4538, 137.066 )
+texture = ExtResource( 8 )
+hframes = 5
+
+[node name="Bat3" type="Sprite" parent="PanelContainer"]
+position = Vector2( 73.158, 132.441 )
+texture = ExtResource( 8 )
+hframes = 5
+frame = 2
+
+[node name="Player" type="Sprite" parent="PanelContainer"]
+position = Vector2( 236.712, 135.805 )
+texture = ExtResource( 7 )
+hframes = 44
+frame = 24
+
+[node name="Player2" type="Sprite" parent="PanelContainer"]
+position = Vector2( 280.859, 110.578 )
+texture = ExtResource( 7 )
+hframes = 63
+frame = 18
 
 [node name="FadeIn" parent="." instance=ExtResource( 2 )]
 visible = false
