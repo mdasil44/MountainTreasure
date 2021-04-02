@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/UI/ButtonRight.png" type="Texture" id=3]
 [ext_resource path="res://assets/UI/ButtonLeft.png" type="Texture" id=4]
 [ext_resource path="res://assets/UI/ButtonBottom.png" type="Texture" id=5]
-[ext_resource path="res://src/UI/KeyPickup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/UI/Key.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/UI/hearts.png" type="Texture" id=7]
 [ext_resource path="res://assets/Potions/small_potions.png" type="Texture" id=8]
 
@@ -133,7 +133,6 @@ position = Vector2( 9.50799, 17.3999 )
 texture = ExtResource( 4 )
 
 [node name="Goal" type="Control" parent="."]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -151,12 +150,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="KeyPickup" parent="Goal" instance=ExtResource( 6 )]
-position = Vector2( 77.1522, 16.6077 )
-color = 4
-animated = false
+[node name="Key" parent="Goal" instance=ExtResource( 6 )]
+position = Vector2( 77.4675, 16.8179 )
+frame = 11
 
 [node name="Potions" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {

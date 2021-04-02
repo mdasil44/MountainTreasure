@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Custom Edited - Mario Customs - Switches & Keys Super Mario Maker-Style.png-122b25d0d1e4c24917bdf4c502351b42.stex"
+path="res://.import/titleScreenBG.png-5fe3f8e95cb266d3e64b2397c38a1dd8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI/Custom Edited - Mario Customs - Switches & Keys Super Mario Maker-Style.png"
-dest_files=[ "res://.import/Custom Edited - Mario Customs - Switches & Keys Super Mario Maker-Style.png-122b25d0d1e4c24917bdf4c502351b42.stex" ]
+source_file="res://src/UI/titleScreenBG.png"
+dest_files=[ "res://.import/titleScreenBG.png-5fe3f8e95cb266d3e64b2397c38a1dd8.stex" ]
 
 [params]
 
