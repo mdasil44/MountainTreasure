@@ -1,11 +1,10 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://assets/Levels/sheet.png" type="Texture" id=1]
 [ext_resource path="res://src/Enemies/EnemyBat.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Enemies/EnemyBat_Fire.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Enemies/EnemyBat_Ice.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/Enemies/EnemySlime.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Levels/Level.gd" type="Script" id=7]
 [ext_resource path="res://src/Levels/FadeIn.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/UI/Interface.tscn" type="PackedScene" id=9]
@@ -1936,21 +1935,99 @@ color = 4
 [node name="Player" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 80.013, 243.062 )
 
-[node name="Room1" type="YSort" parent="YSort"]
+[node name="Room1" type="YSort" parent="YSort" groups=[
+"Level1_Rooms",
+]]
+
+[node name="Position2D" type="Position2D" parent="YSort/Room1"]
+position = Vector2( 119.61, 77.5431 )
 
 [node name="EnemyBat" parent="YSort/Room1" instance=ExtResource( 2 )]
-position = Vector2( 637.378, 70.8546 )
+position = Vector2( 49.246, 66.8861 )
 
-[node name="Slime" parent="YSort/Room1" instance=ExtResource( 6 )]
-position = Vector2( 746.695, 120.047 )
+[node name="EnemyBat2" parent="YSort/Room1" instance=ExtResource( 2 )]
+position = Vector2( 105.562, 99.2125 )
 
-[node name="EnemyBat_Ice" parent="YSort/Room1" instance=ExtResource( 4 )]
-position = Vector2( 628.128, 418.565 )
+[node name="EnemyBat3" parent="YSort/Room1" instance=ExtResource( 2 )]
+position = Vector2( 189.694, 69.8456 )
 
-[node name="EnemyBat_Fire" parent="YSort/Room1" instance=ExtResource( 3 )]
-position = Vector2( 744.172, 460.61 )
+[node name="Room2" type="YSort" parent="YSort" groups=[
+"Level1_Rooms",
+]]
 
-[node name="EnemyBat_Fire" parent="YSort" instance=ExtResource( 12 )]
+[node name="Position2D" type="Position2D" parent="YSort/Room2"]
+position = Vector2( 452.342, 84.1026 )
+
+[node name="EnemyBat_Fire" parent="YSort/Room2" instance=ExtResource( 3 )]
+position = Vector2( 521.142, 62.1723 )
+
+[node name="EnemyBat_Fire2" parent="YSort/Room2" instance=ExtResource( 3 )]
+position = Vector2( 469.552, 112.969 )
+
+[node name="EnemyBat_Fire3" parent="YSort/Room2" instance=ExtResource( 3 )]
+position = Vector2( 386.213, 92.3329 )
+
+[node name="Room3" type="YSort" parent="YSort" groups=[
+"Level1_Rooms",
+]]
+
+[node name="Position2D" type="Position2D" parent="YSort/Room3"]
+position = Vector2( 684.866, 87.2207 )
+
+[node name="EnemyBat_Ice" parent="YSort/Room3" instance=ExtResource( 4 )]
+position = Vector2( 744.802, 65.3683 )
+
+[node name="EnemyBat_Ice2" parent="YSort/Room3" instance=ExtResource( 4 )]
+position = Vector2( 627.334, 116.959 )
+
+[node name="Room4" type="YSort" parent="YSort" groups=[
+"Level1_Rooms",
+]]
+
+[node name="Position2D" type="Position2D" parent="YSort/Room4"]
+position = Vector2( 265.604, 359.302 )
+
+[node name="EnemyBat" parent="YSort/Room4" instance=ExtResource( 2 )]
+position = Vector2( 211.918, 362.721 )
+
+[node name="EnemyBat2" parent="YSort/Room4" instance=ExtResource( 2 )]
+position = Vector2( 319.068, 360.34 )
+
+[node name="Room5" type="YSort" parent="YSort" groups=[
+"Level1_Rooms",
+]]
+
+[node name="Position2D" type="Position2D" parent="YSort/Room5"]
+position = Vector2( 437.954, 564.223 )
+
+[node name="EnemyBat" parent="YSort/Room5" instance=ExtResource( 2 )]
+position = Vector2( 89.6882, 568.289 )
+
+[node name="EnemyBat_Ice" parent="YSort/Room5" instance=ExtResource( 4 )]
+position = Vector2( 236.523, 569.083 )
+
+[node name="EnemyBat_Fire" parent="YSort/Room5" instance=ExtResource( 3 )]
+position = Vector2( 403.2, 568.289 )
+
+[node name="Room6" type="YSort" parent="YSort" groups=[
+"Level1_Rooms",
+]]
+
+[node name="Position2D" type="Position2D" parent="YSort/Room6"]
+position = Vector2( 975.94, 563.593 )
+
+[node name="EnemyBat" parent="YSort/Room6" instance=ExtResource( 2 )]
+position = Vector2( 638.929, 442.885 )
+
+[node name="EnemyBat_Fire" parent="YSort/Room6" instance=ExtResource( 3 )]
+position = Vector2( 737.348, 438.916 )
+
+[node name="EnemyBat_Ice" parent="YSort/Room6" instance=ExtResource( 4 )]
+position = Vector2( 957.996, 569.877 )
+
+[node name="Room7" type="YSort" parent="YSort"]
+
+[node name="EnemyBat_Fire" parent="YSort/Room7" instance=ExtResource( 12 )]
 position = Vector2( 920.732, 240.533 )
 
 [node name="LevelTransition" parent="." instance=ExtResource( 11 )]
