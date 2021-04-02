@@ -16,6 +16,7 @@ onready var positions = [$YSort/Room1/Position2D, $YSort/Room2/Position2D, $YSor
 var rng = RandomNumberGenerator.new()
 
 var roomNodes = []
+var bossRoom = []
 
 
 func _ready() -> void:
@@ -25,13 +26,18 @@ func _ready() -> void:
 	$UILayer/FadeIn.hide()
 	
 	$LevelTransition/KeyRequirement/KeysRequired.text = str(required_keys)
-	$LevelTransition/KeyRequirement.visible = true
 	
 	$LevelTransition.connect("body_entered", self, "next_level")
 
 	roomNodes = get_tree().get_nodes_in_group("Level1_Rooms")
+	bossRoom = get_tree().get_nodes_in_group("BossRoom")
 
 func _physics_process(delta):
+	print(bossRoom)
+	print(bossRoom[0].get_child_count() == 0 if not bossRoom.empty() else "hi")
+	if not bossRoom.empty() and bossRoom[0].get_child_count() == 0:
+		$LevelTransition/KeyRequirement.visible = true
+	
 	if roomNodes.empty():
 		return
 	
@@ -39,8 +45,6 @@ func _physics_process(delta):
 		if roomNodes[i].get_child_count() == 1 && rooms[i] == 1:
 			rooms[i] = 0
 			spawn_potion(i)
-			
-	
 
 
 func next_level(body: Node) -> void:
