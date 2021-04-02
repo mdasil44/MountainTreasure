@@ -9,6 +9,7 @@ onready var Pos5 = $Position5
 onready var Pos6 = $Position6
 
 var count = 0
+var dead_count = 0
 
 
 var Slime1 = preload("res://src/Enemies/EnemyMediumSlime.tscn")
@@ -49,6 +50,9 @@ func on_medium_dead(val):
 		var slime_instance3 = Slime3.instance()
 		var slime_instance4 = Slime4.instance()
 		
+		slime_instance3.connect("slime_dead", self, "on_baby_dead")
+		slime_instance4.connect("slime_dead", self, "on_baby_dead")
+		
 		Pos3.set_global_position(val + Vector2(0,10))
 		Pos4.set_global_position(val + Vector2(0,-10))
 		
@@ -58,8 +62,16 @@ func on_medium_dead(val):
 		var slime_instance5 = Slime3.instance()
 		var slime_instance6 = Slime4.instance()
 		
+		slime_instance5.connect("slime_dead", self, "on_baby_dead")
+		slime_instance6.connect("slime_dead", self, "on_baby_dead")
+		
 		Pos5.set_global_position(val + Vector2(0,10))
 		Pos6.set_global_position(val + Vector2(0,-10))
 		
 		Pos5.add_child(slime_instance5)
 		Pos6.add_child(slime_instance6)
+		
+func on_baby_dead():
+	dead_count += 1;
+	if dead_count == 4:
+		queue_free()
