@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/UI/GameOverScreen.gd" type="Script" id=1]
+[ext_resource path="res://src/UI/FadeIn.tscn" type="PackedScene" id=2]
 
 [node name="GameOverScreen" type="CanvasLayer"]
 pause_mode = 2
@@ -43,5 +44,8 @@ margin_top = 64.0
 margin_right = 57.0
 margin_bottom = 84.0
 text = "Quit"
+
+[node name="FadeIn" parent="." instance=ExtResource( 2 )]
+visible = false
 [connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

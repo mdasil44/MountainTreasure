@@ -20,6 +20,9 @@ func setTitle(win: bool):
 
 func _on_Restart_pressed():
 	PlayerStats.reset()
+	$FadeIn.show()
+	$FadeIn.fade_in()
+	yield($FadeIn, "fade_finished")
 	get_tree().change_scene("res://src/Levels/Level1.tscn")
 
 

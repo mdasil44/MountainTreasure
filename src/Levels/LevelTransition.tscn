@@ -1,11 +1,42 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/UI/KeyPickup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/UI/SuperLegendBoy-4w8Y.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
 
 [node name="LevelTransition" type="Area2D"]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 975.835, 33.6736 )
 shape = SubResource( 1 )
+
+[node name="KeyRequirement" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KeysRequired" type="Label" parent="KeyRequirement"]
+margin_left = -14.0
+margin_top = -27.0
+margin_bottom = -10.0
+custom_fonts/font = SubResource( 2 )
+text = "5"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KeyPickup" parent="KeyRequirement" instance=ExtResource( 1 )]
+position = Vector2( 6.72718, -18.4997 )
+animated = false

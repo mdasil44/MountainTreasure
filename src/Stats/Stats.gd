@@ -59,6 +59,7 @@ func _physics_process(delta: float) -> void:
 func reset():
 	set_max_health(default_max_health)
 	set_health(max_health)
+	set_mana(max_mana)
 
 
 func set_health(value):
