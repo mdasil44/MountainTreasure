@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/UI/TitleScreen.gd" type="Script" id=1]
+[ext_resource path="res://src/UI/FadeIn.tscn" type="PackedScene" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.235294, 0.235294, 0.235294, 1 )
@@ -41,5 +42,12 @@ margin_top = 64.0
 margin_right = 119.0
 margin_bottom = 84.0
 text = "Exit"
+
+[node name="FadeIn" parent="." instance=ExtResource( 2 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 320.0
+margin_bottom = 180.0
 [connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]

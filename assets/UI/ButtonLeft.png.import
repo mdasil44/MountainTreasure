@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/small_potions.png-7bfe200afef1ea92e1a3e4dc04cc26db.stex"
+path="res://.import/ButtonLeft.png-6dfb04bdc11f53ef1c40dfc4a489048c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/Potions/small_potions.png"
-dest_files=[ "res://.import/small_potions.png-7bfe200afef1ea92e1a3e4dc04cc26db.stex" ]
+source_file="res://assets/UI/ButtonLeft.png"
+dest_files=[ "res://.import/ButtonLeft.png-6dfb04bdc11f53ef1c40dfc4a489048c.stex" ]
 
 [params]
 

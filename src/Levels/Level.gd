@@ -6,9 +6,13 @@ export (String) var next_scene
 
 
 func _ready() -> void:
+	$UILayer/FadeIn.show()
 	$UILayer/FadeIn.fade_out()
 	yield($UILayer/FadeIn, "fade_finished")
 	$UILayer/FadeIn.hide()
+	
+	$LevelTransition/KeyRequirement/KeysRequired.text = str(required_keys)
+	$LevelTransition/KeyRequirement.visible = true
 	
 	$LevelTransition.connect("body_entered", self, "next_level")
 
